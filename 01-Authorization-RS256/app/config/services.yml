@@ -4,6 +4,14 @@ parameters:
     #parameter_name: value
 
 services:
+    AppBundle\:
+        resource: '../../src/AppBundle/*'
+
+    exception.listener:
+            class: AppBundle\EventListener\AuthenticationExceptionListener
+            tags:
+                - { name: kernel.event_listener, event: kernel.exception, method: onKernelException}
+
     a0_user_provider:
         class: AppBundle\Security\A0UserProvider
         arguments: ["@jwt_auth.auth0_service"]
