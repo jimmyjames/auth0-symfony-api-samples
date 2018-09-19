@@ -13,7 +13,7 @@ jobs:
           command: |
               mv .env.example .env
               sed -i "s/{DOMAIN}/$AUTH0_TEST_DOMAIN/g" .env
-              sed -i "s/{AUTH0_AUDIENCE}/$AUTH0_TEST_AUDIENCE/g" .env    
+              sed -i "s/{AUTH0_AUDIENCE}/$AUTH0_TEST_AUDIENCE/g" .env
               head .env
  
       - run: 
@@ -50,11 +50,11 @@ jobs:
 
       - run:
           name: Install test script dependency
-          command: cd test && npm install 
+          command: cd test && npm install
 
       - run:
           name: Test
-          command: cd test && npm test
+          command: cd test && quickstart="symfony" npm test
 workflows:
   version: 2
   build:
