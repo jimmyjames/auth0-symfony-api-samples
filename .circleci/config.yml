@@ -3,36 +3,36 @@ jobs:
   build:
     working_directory: ~/repo/01-Authorization-RS256
     machine: true
-           
+
     steps:
       - checkout:
          path: ~/repo
 
-      - run: 
+      - run:
           name: Set .env file
           command: |
               mv .env.example .env
               sed -i "s/{DOMAIN}/$AUTH0_TEST_DOMAIN/g" .env
-              sed -i "s/{AUTH0_AUDIENCE}/$AUTH0_TEST_AUDIENCE/g" .env
+              sed -i "s/{API_AUDIENCE}/$AUTH0_TEST_AUDIENCE/g" .env
               head .env
- 
-      - run: 
+
+      - run:
            name: background server
            command: sh exec.sh
            background: true
-           
+
       - run:
            name: Wait until server is online
            command: |
               until $(curl --output /dev/null --silent --head --fail http://localhost:3010/api/public); do
                   sleep 5
               done
-         
+
       - run:
           name: Clone script test
           command: git clone https://github.com/auth0-samples/api-quickstarts-tests test
-          
-      - run: 
+
+      - run:
           name: Prepare environment variables for test
           command: |
             cd test
