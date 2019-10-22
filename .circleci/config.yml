@@ -81,7 +81,3 @@ workflows:
           context: Quickstart API Tests
           requires:
             - checkout
-      - 02-Authorization-HS256:
-          context: Quickstart API Tests
-          requires:
-            - checkout
