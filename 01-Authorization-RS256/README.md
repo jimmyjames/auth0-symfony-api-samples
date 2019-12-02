@@ -25,7 +25,7 @@ The API will be served at [localhost:3010](http://localhost:3010).
 
 #### Running the Sample With Docker
 
-In order to run the example with docker you need to have `docker` installed.
+In order to run the example with docker, you need to have `docker` installed.
 
 You also need to set the client credentials as explained [previously](#Configure-the-app-with-your-auth0-domain-and-audience).
 
